@@ -10,18 +10,18 @@
 
 # List of Packages to be use
 packages <-
-    c("shiny",
-      "shinydashboard",
-      "dplyr",
-      "leaflet",
-      "htmltools",
-      "shinyjs")
+  c("shiny",
+    "shinydashboard",
+    "dplyr",
+    "leaflet",
+    "htmltools",
+    "shinyjs")
 
 # Install packages not yet installed
 installed_packages <- packages %in% rownames(installed.packages())
 
 if (any(installed_packages == FALSE)) {
-    install.packages(packages[!installed_packages])
+  install.packages(packages[!installed_packages])
 }
 
 # Packages loading
@@ -36,34 +36,31 @@ title <- tags$img(src = "icon.png",
 # Start of the  User Interface
 
 ui <- dashboardPage(
-    dashboardHeader(title = title), 
-    dashboardSidebar(width = 400,
-                     searchbar_ui("search_label")),  # Module-1(UI) from searchbar.R source file
-    
-    dashboardBody(includeCSS("www/main.css"),  # Including the css file
-                  
+  dashboardHeader(title = title), 
+  dashboardSidebar(width = 400,
+                   searchbar_ui("search_label")),  # Module-1(UI) from searchbar.R source file
+  
+  dashboardBody(includeCSS("www/main.css"),  # Including the css file
+                useShinyjs(),  # Use shinyjs
                   map_ui("species_maplabel"))  # Module-2(UI) from map.R source file
-    
-)  # End of the User Interface
+
+  )  # End of the User Interface
 
 # Start of the Server Logic
 
 server <- function(input, output, session) {
-    # Assiging the Server Module-1 to the new variable
-    search_text_value <- searchbar_server("search_label")  
-    
-    # passing the function arguments inside the Server Module -2 using Server Module-1. 
-    
-    map_server(
-        "species_maplabel",
-        search_value = search_text_value$input_search,  # getting the input_search value from the Server Module-1
-        input_datasetvalue = search_text_value$input_dataset  # Loading the dataset from the Server Module-1
-    )  
-    
-    
+  # Assiging the Server Module-1 to the new variable
+  search_text_value <- searchbar_server("search_label")  
+  
+  # passing the function arguments inside the Server Module -2 using Server Module-1. 
+  
+  map_server(
+    "species_maplabel",
+    search_value = search_text_value$input_search,  # getting the input_search value from the Server Module-1
+    input_datasetvalue = search_text_value$input_dataset  # Loading the dataset from the Server Module-1
+  )
+  
 } 
 # End of the Server Logic
 shinyApp(ui, server)  # Load the ui,server functions for shinyapp.
 # End of the Shiny Application
-
-
