@@ -69,8 +69,8 @@ map_server <- function(id, search_value, input_datasetvalue) {
       # Filter the Scientific name column from the reactive function argument table by giving search input data
       
       values$checkbox_species <-
-        filter(input_datasetvalue(),
-               scientificName %in% values$checkbox_values)
+              filter(input_datasetvalue(),scientificName==values$checkbox_values | vernacularName==values$checkbox_values)
+
       
       
       # Render the output to get the Map with selected observations of the species.
