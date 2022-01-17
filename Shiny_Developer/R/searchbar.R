@@ -8,7 +8,7 @@ searchbar_ui <- function(id) {
     
     # Create select input to search the names of the user input
     
-    selectInput(ns('search_text'),tags$h4('Search with ScientificName:'), choices = NULL, multiple=TRUE)
+    selectInput(ns('search_text'),tags$h4('Search with ScientificName:'), choices = NULL, selectize= TRUE )
     
   )
   
@@ -21,7 +21,6 @@ searchbar_server <- function(id) {
   moduleServer(id, function(input, output, session) {   # Moduleserver function starts..
     
     input_dataset<-read.csv("./input_final.csv")
-    #input_dataset<-read.csv("./biodiversity_data.csv")  # Load the inputdataset
     
     # Observe is to update the choices to the select input widget
     observe(
