@@ -72,8 +72,9 @@ map_server <- function(id, search_value, input_datasetvalue) {
       filter(input_datasetvalue(),scientificName==values$checkbox_values | vernacularName==values$checkbox_values)
       
       
-      # Render the output to get the Map with selected observations of the species.
+       # Render the output to get the Map with selected observations of the species.
       output$species_map <- renderLeaflet({
+        
         m <- leaflet(values$checkbox_species) %>%
           addTiles() %>%
           addCircleMarkers(
