@@ -8,7 +8,7 @@ map_ui <- function(id) {
   ns <- shiny::NS(id) # Namespace for Unique id's
   shiny::tagList(
     br(),
-    # Create a box to show the leaflet map
+  # Create a box to show the leaflet map
     box(
       title = "Selected Species Observations on the map",
       width = 9,
@@ -27,23 +27,22 @@ map_ui <- function(id) {
 
 map_server <- function(id, search_value, input_datasetvalue) {
   
-  # Start of the Module server.
+# Start of the Module server.
   
   moduleServer(id, function(input, output, session) {  
     ns <- shiny::NS(id) # Namespace for Unique id's
     
     values <- reactiveValues()  # User reactive values for global use
-    
-    # Render output to check serchbar is null or not  
+   
+  # Render output to check serchbar is null or not  
     
     output$ui_text_map <- renderUI({
-      
-      if (is.null(search_value())) { # used reactive function argument from servermodule-1
+      if (search_value()=="") { # used reactive function argument from servermodule-1
         
         infoBoxOutput(ns("user_info"))  # if it is NULL show the info box
       } else{
-        
-        leafletOutput(ns("species_map"), height = "550px")  # Not null show the map 
+       
+         leafletOutput(ns("species_map"), height = "550px")  # Not null show the map 
       }
     })  # End of the output
     
@@ -69,8 +68,8 @@ map_server <- function(id, search_value, input_datasetvalue) {
       # Filter the Scientific name column from the reactive function argument table by giving search input data
       
       values$checkbox_species <-
-              filter(input_datasetvalue(),scientificName==values$checkbox_values | vernacularName==values$checkbox_values)
-
+       
+      filter(input_datasetvalue(),scientificName==values$checkbox_values | vernacularName==values$checkbox_values)
       
       
       # Render the output to get the Map with selected observations of the species.
@@ -106,5 +105,3 @@ map_server <- function(id, search_value, input_datasetvalue) {
   })  # End of the Module Server Function
 }
 # End of the Server Module-2
-
-
