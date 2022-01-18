@@ -19,4 +19,16 @@ Version 1.4.1717
 
 ### Deployment:
 Deployed in the Shinyapps.io Server
-### Lanuch:
+### Launch:
+
+## R Shiny Application Set-Up:
+### The application consists of two modules...
+
+* The first R Shiny module creates the select input at the sidebar in the  UI and then returns the select value in the server module.
+* The second R Shiny module creates the infobox and the Leaflet map with selected observations. Depending on the search, this module uses the select input from module one and returns the matching results at the search bar and map.
+* The final app.R file will add these source files and run the shiny app.
+
+### WWW Folder
+>  main.css file is to add CSS elements to add style to the shiny application.
+
+>   icon.png file to add an icon to the shiny app at the header place.
