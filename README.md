@@ -21,6 +21,8 @@ Version 1.4.1717
 Deployed in the Shinyapps.io Server
 ### Launch:
 
+https://anjananarayana.shinyapps.io/Shiny_Developer/
+
 ## R Shiny Application Set-Up:
 ### The application consists of two modules...
 
