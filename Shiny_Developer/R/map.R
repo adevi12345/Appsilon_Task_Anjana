@@ -11,11 +11,12 @@ map_ui <- function(id) {
   # Create a box to show the leaflet map
     box(
       title = "Selected Species Observations on the map",
-      width = 9,
+      width = 11,
       solidHeader = TRUE,
       status = "primary",
-      uiOutput(ns("ui_text_map"))  # uioutput for the infobox and leaflet map
-    )  # End of the box
+      uiOutput(ns("ui_text_map")),  # uioutput for the infobox and leaflet map
+    
+       )  # End of the box
     
   )
 }
@@ -42,8 +43,9 @@ map_server <- function(id, search_value, input_datasetvalue) {
         infoBoxOutput(ns("user_info"))  # if it is NULL show the info box
       } else{
        
-         leafletOutput(ns("species_map"), height = "550px")  # Not null show the map 
-      }
+         leafletOutput(ns("species_map"), height = "380px") # Not null show the map 
+      
+        }
     })  # End of the output
     
     # Render the output of infobox
@@ -61,7 +63,8 @@ map_server <- function(id, search_value, input_datasetvalue) {
     # Observe event to trigger the search bar input...
     
     observeEvent(search_value(), {
-      # Load the reactive function argument into the new reactive variable.
+      
+     
       
       values$checkbox_values <- search_value()  
       
@@ -75,7 +78,7 @@ map_server <- function(id, search_value, input_datasetvalue) {
        # Render the output to get the Map with selected observations of the species.
       output$species_map <- renderLeaflet({
         
-        m <- leaflet(values$checkbox_species) %>%
+        values$m <- leaflet(values$checkbox_species) %>%
           addTiles() %>%
           addCircleMarkers(
             lng = ~ longitudeDecimal,
@@ -96,11 +99,10 @@ map_server <- function(id, search_value, input_datasetvalue) {
           )
         
         
-        m %>% addMiniMap(tiles = providers$Esri.WorldStreetMap,
+        values$m %>% addMiniMap(tiles = providers$Esri.WorldStreetMap,
                          toggleDisplay = TRUE)
       })  # End of the render output 
-      
-      
+     
     })  # End of the Observe Event
     
   })  # End of the Module Server Function
