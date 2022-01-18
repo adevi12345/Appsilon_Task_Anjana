@@ -2,7 +2,9 @@
 ## Introduction - Project's aim
 Build a dashboard that is to visualize selected species observations on the map and how often it is observed.
 ## Input Data:
->"Occurence.csv" ("Only limited to Poland")
+>"poland_data.csv" ("Only limited to Poland")
+>Used "data_filtering_poland.py" Code to filter the poland data
+
 ### Libraries:
   * "shiny"
   * "shinydashboard"
