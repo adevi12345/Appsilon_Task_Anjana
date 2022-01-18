@@ -18,8 +18,8 @@ searchbar_ui <- function(id) {
 searchbar_server <- function(id) {
 
   moduleServer(id, function(input, output, session) {   # Moduleserver function starts..
-
-    input_dataset<-read.csv("./input_final.csv")  # Load the inputdataset
+    
+    input_dataset<-read.csv("poland_data.csv")  # Load the inputdataset
     
     # Observe is to update the choices to the select input widget
     observe({
