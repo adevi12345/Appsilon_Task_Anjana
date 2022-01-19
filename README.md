@@ -4,7 +4,7 @@ Build a dashboard that is to visualize selected species observations on the map 
 ## Input Data:
 *  "poland_data.csv" ("Only limited to Poland")
 
-*  Used "data_filtering_poland.py" Code to filter the poland data
+*  Used "data_filtering_poland.py" Code to filter the poland data from "occurence.csv"
 
 ### Libraries:
   * "shiny"
