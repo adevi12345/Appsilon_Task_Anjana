@@ -49,3 +49,22 @@
     background-color: #605ca8!important;
     width: 427px;
 }
+
+.modal.in .modal-dialog {
+    -webkit-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+    bottom: -196px;
+    width: 1000px;
+}
+
+.btn-default {
+    background-color: darkcyan;
+    color: rgb(255 255 255);
+    border-color: rgb(255 255 255);
+    /* padding-top: 7px; */
+    margin-bottom: 9pxx;
+    margin-top: 13px;
+    margin-left: 12px;
+}
