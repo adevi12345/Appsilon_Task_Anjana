@@ -60,7 +60,7 @@ map_server <- function(id, search_value, input_datasetvalue) {
     
     output$user_info <- renderInfoBox({
       infoBox(
-        "Please Select Scientific Name",
+        "Please Select Scientific Name and vernacularName ",
         paste0("Enter your search to view the Observations on the Map "),
         icon = icon("map-marker"),
         color = "purple",
