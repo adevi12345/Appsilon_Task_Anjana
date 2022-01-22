@@ -8,7 +8,7 @@ searchbar_ui <- function(id) {
     
     # Create select input to search the names of the user input
     
-    selectInput(ns('search_text'),tags$h4('Search with ScientificName:'), choices = NULL, selectize= TRUE ),
+    selectInput(ns('search_text'),tags$h4('Search with ScientificName and vernacularName:'), choices = NULL, selectize= TRUE ),
     tags$hr(),
     uiOutput(ns('numberof_choices_ui'))  # UI for choices list
   )
